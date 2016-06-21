@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片延迟加载</title>
+	<style>
+	img{width:400px;height:500px;margin-right:10px;margin-bottom:10px;border:1px solid red;}
+	</style>
+	<script>
+	window.onload=window.onresize=window.onscroll=function(){
+		var aImg=document.getElementsByTagName('img');
+		function getPos(obj){
+			var l=0;
+			var t=0;
+			while(obj.offsetParent){
+				l+=obj.offsetLeft;
+				t+=obj.offsetTop;
+				obj=obj.offsetParent;
+			};
+			return {l:l,t:t}
+		};
+		for(var i=0;i<aImg.length;i++){
+			var sH=document.body.scrollTop||document.documentElement.scrollTop;
+			var cH=document.documentElement.clientHeight;
+			var oT=sH+cH;
+			if(getPos(aImg[i]).t<=oT){
+				aImg[i].src=aImg[i].getAttribute('_src')
+			}
+		};
+	};
+	</script>
+</head>
+<body>
+	<img _src="img/b1.jpg" alt="">
+	<img _src="img/b2.jpg" alt="">
+	<img _src="img/b3.jpg" alt="">
+	<img _src="img/b4.jpg" alt="">
+	<img _src="img/b5.jpg" alt="">
+	<img _src="img/b6.jpg" alt="">
+	<img _src="img/b7.jpg" alt="">
+	<img _src="img/b8.jpg" alt="">
+	<img _src="img/b9.jpg" alt="">
+	<img _src="img/b10.jpg" alt="">
+	<img _src="img/b1.jpg" alt="">
+	<img _src="img/b2.jpg" alt="">
+	<img _src="img/b3.jpg" alt="">
+	<img _src="img/b4.jpg" alt="">
+	<img _src="img/b5.jpg" alt="">
+	<img _src="img/b6.jpg" alt="">
+	<img _src="img/b7.jpg" alt="">
+	<img _src="img/b8.jpg" alt="">
+	<img _src="img/b9.jpg" alt="">
+	<img _src="img/b10.jpg" alt="">
+</body>
+</html>
